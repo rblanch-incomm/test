@@ -1,13 +1,23 @@
 apply plugin: 'com.android.application'
 
+def getAppVersionCode = { ->
+    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
+    return code
+}
+
+def getAppVersionName = { ->
+    def name = project.hasProperty('versionName') ? versionName : "1.0"
+    return name
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.rrblanch_incomm.myapplication"
         minSdkVersion 21
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode getAppVersionCode()
+        versionName getAppVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
