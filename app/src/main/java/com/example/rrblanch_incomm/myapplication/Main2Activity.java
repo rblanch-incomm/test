@@ -3,28 +3,27 @@ package com.example.rrblanch_incomm.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
 
+    TextView textView;
     Button button;
-    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = findViewById(R.id.next_view_btn);
-        editText = findViewById(R.id.edit_text_et);
+        String str = getIntent().getExtras().getString("str");
+        setContentView(R.layout.activity_main2);
+        textView = findViewById(R.id.passed_text_tv);
+        textView.setText(str);
+        button = findViewById(R.id.previous_view_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
-                String str = editText.getText().toString();
-                intent.putExtra("str", str);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

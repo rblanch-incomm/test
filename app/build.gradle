@@ -1,20 +1,20 @@
 apply plugin: 'com.android.application'
 
-def getAppVersionCode = { ->
-    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
-    return code
-}
-
-def getAppVersionName = { ->
-    def name = project.hasProperty('versionName') ? versionName : "1.0"
-    return name
-}
+//def getAppVersionCode = { ->
+//    def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
+//    return code
+//}
+//
+//def getAppVersionName = { ->
+//    def name = project.hasProperty('versionName') ? versionName : "1.0"
+//    return name
+//}
 
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.rrblanch_incomm.myapplication"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -37,23 +37,23 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
 
-apply plugin: BumpReadMeVersionPlugin
-
-class BumpReadMeVersionPlugin implements Plugin<Project> {
-
-    @Override
-    void apply(Project project) {
-        project.task('bumpVersion') << {
-            group = 'test'
-            description = 'Updates the README to the latest version'
-
-            File readMe = new File(project.rootDir.absolutePath + "/README.md")
-            String contents = readMe.getText('UTF-8')
-            contents = contents.replaceAll("test:.*", "test: ${project.android.defaultConfig.versionName}")
-            readMe.write(contents, 'UTF-8')
-        }
-    }
-}
+//apply plugin: BumpReadMeVersionPlugin
+//
+//class BumpReadMeVersionPlugin implements Plugin<Project> {
+//
+//    @Override
+//    void apply(Project project) {
+//        project.task('bumpVersion') << {
+//            group = 'test'
+//            description = 'Updates the README to the latest version'
+//
+//            File readMe = new File(project.rootDir.absolutePath + "/README.md")
+//            String contents = readMe.getText('UTF-8')
+//            contents = contents.replaceAll("test:.*", "test: ${project.android.defaultConfig.versionName}")
+//            readMe.write(contents, 'UTF-8')
+//        }
+//    }
+//}
 
 //task bumpVersion {
 //    group = 'test'
@@ -64,3 +64,27 @@ class BumpReadMeVersionPlugin implements Plugin<Project> {
 //    contents = contents.replaceAll("test:.*", "test: ${android.defaultConfig.versionName}")
 //    readMe.write(contents, 'UTF-8')
 //}
+
+// Input Variables in Create Tag
+//
+//#!/bin/bash
+//echo “Try to set version code:${BUILD_VERSION_CODE}”
+//echo “Try to set version name:${BUILD_VERSION_NAME}”
+//if [ “${BITRISE_BUILD_STATUS}” = “0” ]; then
+//# Since we want to push, Github must be added to known hosts
+//ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+//# Config git since we will push a commit and tag
+//git config --global user.email “hesam.kamalan@grabtaxi.com”
+//git config --global user.name “bitrise”
+//git config --global push.followTags true
+//
+//# Trying to update README file based on latest version code and name
+//        ./gradlew bumpVersion -PversionCode=”${BUILD_VERSION_CODE}” -PversionName=”${BUILD_VERSION_NAME}”
+// git add README.md
+// git commit -m “Version code is set to ${BUILD_VERSION_CODE}, Version name is set to ${BUILD_VERSION_NAME} by ${GIT_CLONE_COMMIT_AUTHOR_NAME}”
+//# Trying to create annotated tag based on submitted version code and name
+// git tag -a “${BUILD_VERSION_NAME}-${BUILD_VERSION_CODE}” -m “The tag created by release workflow on Bitrise”
+//# Push commit and tag to repo
+// git push --follow-tags
+// git show “${BUILD_VERSION_NAME}-${BUILD_VERSION_CODE}”
+//fi
