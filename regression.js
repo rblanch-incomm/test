@@ -22,4 +22,6 @@ async function main () {
   await driver.quit();
 }
 
+console.log('THIS IS NOW WORKING BECAUSE I ROXXXXXXXX ');
+
 main().catch(console.log);
