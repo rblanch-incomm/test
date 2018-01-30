@@ -5,7 +5,7 @@
 const wd = require('wd');
 const driver = wd.promiseChainRemote("localhost", 4723);
 //const caps = {"platformName":"Android","platformVersion":"8.1","app":"/Volumes/UUI/Projects/MyApplication2/app/build/outputs/apk/debug/app-debug.apk","deviceName":"Android Emulator"};
-const caps = {"platformName":"Android","platformVersion":"8.1","app":"./app/build/outputs/apk/debug/app-debug.apk","deviceName":"Android Emulator"};
+const caps = {"platformName":"Android","platformVersion":"5.0.2","app":"./app/build/outputs/apk/debug/app-debug.apk","deviceName":"Android Emulator"};
 
 async function main () {
   await driver.init(caps);
