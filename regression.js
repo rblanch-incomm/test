@@ -5,7 +5,7 @@
 const wd = require('wd');
 const driver = wd.promiseChainRemote("localhost", 4723);
 //const caps = {"platformName":"Android","platformVersion":"8.1","app":"/Volumes/UUI/Projects/MyApplication2/app/build/outputs/apk/debug/app-debug.apk","deviceName":"Android Emulator"};
-const caps = {"platformName":"Android","platformVersion":"8.0","app":process.env.BITRISE_APK_PATH,"deviceName":"Android Emulator"};
+const caps = {"platformName":"Android","platformVersion":"8.0","app":process.env.BITRISE_TEST_APK_PATH,"deviceName":"Android Emulator"};
 
 async function main () {
   await driver.init(caps);
@@ -22,6 +22,7 @@ async function main () {
 //  await driver.quit();
 }
 
-console.log(process.env.BITRISE_APK_PATH);
+console.log("APK:", process.env.BITRISE_APK_PATH);
+console.log("TEST", process.env.BITRISE_TEST_APK_PATH);
 
 main().catch(console.log);
