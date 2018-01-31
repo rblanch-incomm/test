@@ -22,6 +22,6 @@ async function main () {
   await driver.quit();
 }
 
-console.log('THIS IS NOW WORKING BECAUSE I ROXXXXXXXX ');
+console.log(process.env.BITRISE_APK_PATH);
 
 main().catch(console.log);
