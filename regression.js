@@ -19,7 +19,7 @@ async function main () {
   let el4 = await driver.elementById("com.example.rrblanch_incomm.myapplication:id/next_view_btn");
   await el4.click();
   console.log("TEXT:", driver.elementById("com.example.rrblanch_incomm.myapplication:id/passed_text_tv"));
-  await driver.quit();
+//  await driver.quit();
 }
 
 console.log(process.env.BITRISE_APK_PATH);
